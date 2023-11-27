@@ -1,0 +1,38 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
+
+namespace WGameMovieEngine.Engine.UI
+{
+    /// <summary>
+    /// Логика взаимодействия для GameWindow.xaml
+    /// </summary>
+    public partial class GameWindow : Window
+    {
+        public Events Events { get; set; }
+        public Functions Functions { get; set; }
+        public GameWindow()
+        {
+            InitializeComponent();
+
+            Events = new Events(this);
+            Functions = new Functions(this);
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            this.Hide();
+            Environment.Exit(0);
+        }
+    }
+}
