@@ -22,13 +22,13 @@ switch (selectionMenuItem.Index)
 {
     case 0:
         {
-            await gameWindow.Functions.PlayVideo(gameWindow.Resources.VIDEO_SUNP001);
+            // Ударить
         }
         break;
 
     case 1:
         {
-            await gameWindow.Functions.PlayVideo(gameWindow.Resources.VIDEO_SUNP002);
+            // Передумать
         }
         break;
 }
