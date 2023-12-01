@@ -34,7 +34,7 @@ switch (selectionMenuItem.Index)
 }
 ```
 
-Пример создание KeyResponse:
+Пример создания KeyResponse:
 ```csharp
 if ((await gameWindow.Functions.KeyResponse(Key.H, 2, new Point(1, 1))) == KeyResponseResult.Successfully)
 {
