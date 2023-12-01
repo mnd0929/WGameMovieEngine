@@ -18,12 +18,16 @@ SelectionMenuItem selectionMenuItem = await gameWindow.Functions.GetAnswerFromSe
 
 );
 
-if (selectionMenuItem.Index == 0)
+switch (selectionMenuItem.Index)
 {
-  await gameWindow.Functions.PlayVideo(gameWindow.Resources.VIDEO_SUNP001);
-}
-else if (selectionMenuItem.Index == 1)
-{
-  await gameWindow.Functions.PlayVideo(gameWindow.Resources.VIDEO_SUNP002);
+    case 0:
+        {
+            await gameWindow.Functions.PlayVideo(gameWindow.Resources.VIDEO_SUNP001);
+        }
+
+    case 1:
+        {
+            await gameWindow.Functions.PlayVideo(gameWindow.Resources.VIDEO_SUNP002);
+        }
 }
 ```
