@@ -4,7 +4,7 @@
 - Вся логика размещается в Main.cs
 - Функции, ивенты, ресурсы проекта вызываются / добываются через экземпляр Engine.UI.GameWindow
 
-  Пример создания выбора:
+Пример создания выбора:
 ```csharp
 SelectionMenuItem selectionMenuItem = await gameWindow.Functions.GetAnswerFromSelectionMenu(new SelectionMenu()
 
@@ -34,7 +34,7 @@ switch (selectionMenuItem.Index)
 }
 ```
 
-  Пример создание KeyResponse:
+Пример создание KeyResponse:
 ```csharp
 if ((await gameWindow.Functions.KeyResponse(Key.H, 2, new Point(1, 1))) == KeyResponseResult.Successfully)
 {
