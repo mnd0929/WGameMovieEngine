@@ -33,3 +33,15 @@ switch (selectionMenuItem.Index)
         break;
 }
 ```
+
+  Пример создание KeyResponse:
+```csharp
+if ((await gameWindow.Functions.KeyResponse(Key.H, 2, new Point(1, 1))) == KeyResponseResult.Successfully)
+{
+    // Игрок успел нажать на кнопку H за 2 секунды
+}
+else
+{
+    // Игрок не успел
+}
+```
