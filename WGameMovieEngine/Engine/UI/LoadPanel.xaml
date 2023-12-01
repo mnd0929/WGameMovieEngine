@@ -1,0 +1,18 @@
+﻿<UserControl x:Class="WGameMovieEngine.Engine.UI.LoadPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WGameMovieEngine.Engine.UI"
+             mc:Ignorable="d" Height="150" Width="415"
+             Opacity="0.7">
+    <Border Background="DarkGray" BorderBrush="Gray" BorderThickness="1,1,1,1" CornerRadius="10,10,10,10" Opacity="0.7">
+        <Grid>
+            <Image x:Name="LoadPanelUI_BackgroundImage" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+            <Label x:Name="LoadPanelUI_TitleLabel"  Content="Заголовок" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="20" Foreground="White"/>
+            <Rectangle x:Name="LoadPanelUI_BorderRectangle" HorizontalAlignment="Center" Height="28" Margin="0,52,0,0" Stroke="White" VerticalAlignment="Top" Width="395"/>
+            <Rectangle x:Name="LoadPanelUI_ProgressRectangle"  HorizontalAlignment="Left" Height="28" Margin="10,52,0,0" Stroke="White" Fill="White" VerticalAlignment="Top" Width="94"/>
+            <Label x:Name="LoadPanelUI_Subtitle"  Content="Подзаголовок" HorizontalAlignment="Left" Margin="10,85,0,0" VerticalAlignment="Top" FontSize="12" Foreground="White" Height="25"/>
+        </Grid>
+    </Border>
+</UserControl>

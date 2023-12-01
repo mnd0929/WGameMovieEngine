@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlTypes;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,14 +16,19 @@ using System.Windows.Shapes;
 namespace WGameMovieEngine.Engine.UI
 {
     /// <summary>
-    /// Логика взаимодействия для SelectionMenuItemStyle1.xaml
+    /// Логика взаимодействия для Logo.xaml
     /// </summary>
-    public partial class SelectionMenuItemStyle1 : UserControl
+    public partial class Logo : UserControl
     {
-        public int Index { get; set; }
-        public SelectionMenuItemStyle1()
+        public Logo()
         {
             InitializeComponent();
+        }
+
+        public void ShowAnimation()
+        {
+            new Animations().CubicAnimation(this.LogoUI_Label, Label.OpacityProperty, 0, 1, 5000);
+            new Animations().CubicAnimation(this.LogoUI_Label, Label.FontSizeProperty, 0, 20, 5000);
         }
     }
 }

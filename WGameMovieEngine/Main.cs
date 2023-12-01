@@ -1,34 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Effects;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using WGameMovieEngine.Engine;
 using WGameMovieEngine.Engine.UI;
 
 namespace WGameMovieEngine
 {
-    /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
+    public class Main
     {
         GameWindow gameWindow = new GameWindow();
-        public MainWindow()
-        {
-            this.Hide();
 
+        public const string TName = "Убеги от шампуня чтобы выжить! (Beta Engine)";
+
+        /// <summary>
+        /// Главная логика проекта
+        /// </summary>
+        public Main() 
+        {
             gameWindow.engineUI_DebugLabel.MouseDown += (_s, _e) =>
             {
                 gameWindow.engineUI_DebugLabel.Content = gameWindow.engineUI_Player.Position.TotalMilliseconds;
@@ -36,11 +27,7 @@ namespace WGameMovieEngine
             };
 
             Test();
-
-            //InitializeComponent();
         }
-
-        public const string TName = "Убеги от шампуня чтобы выжить! (Beta Engine)";
 
         public async void Test()
         {
@@ -49,31 +36,22 @@ namespace WGameMovieEngine
             gameWindow.Functions.ChangeVolume(1);
             gameWindow.Show();
 
-            SelectionMenuItem selectionMenuItem2 = await gameWindow.Functions.GetAnswerFromSelectionMenu(new SelectionMenu()
+            await gameWindow.Functions.RestoreResources();
 
-                    .AddSelectionMenuItem(
-                        new SelectionMenuItem("Начать", @"C:\Users\Minedroid\Downloads\github-mark-white.ico"
-                    ))
+            GamePause();
 
-                    .AddSelectionMenuItem(
-                        new SelectionMenuItem("Настройки", @"C:\Users\Minedroid\Downloads\github-mark-white.ico"
-                    ))
-
-                    .AddSelectionMenuItem(
-                        new SelectionMenuItem("Выход", @"C:\Users\Minedroid\Downloads\github-mark-white.ico"
-                    ))
-
-                );
-
-            if (selectionMenuItem2.Text == "Выход")
+            gameWindow.KeyUp += (_s, _e) =>
             {
-                new Animations().CubicAnimation(gameWindow.engineUI_Player, MediaElement.OpacityProperty, 1, 0, 1);
-                await Task.Delay(1000);
-                Environment.Exit(0);
-            }
-
-            await gameWindow.Functions.PlayVideo("SUNP001.mp4");
-            await gameWindow.Functions.PlayVideo("SUNP002.mp4", true);
+                if (_e.Key == Key.Escape)
+                {
+                    GamePause();
+                }
+            };
+        }
+        public async void StartGame()
+        {
+            await gameWindow.Functions.PlayVideo(gameWindow.Resources.VIDEO_SUNP001);
+            await gameWindow.Functions.PlayVideo(gameWindow.Resources.VIDEO_SUNP002, true);
 
             await Task.Delay(40000);
             if ((await gameWindow.Functions.KeyResponse(Key.X, 2, new Point(1, 1))) == KeyResponseResult.Unsuccessful)
@@ -86,20 +64,20 @@ namespace WGameMovieEngine
             SelectionMenuItem selectionMenuItem = await gameWindow.Functions.GetAnswerFromSelectionMenu(new SelectionMenu()
 
                 .AddSelectionMenuItem(
-                    new SelectionMenuItem("Take", @"C:\Users\Minedroid\Downloads\github-mark-white.ico"
+                    new SelectionMenuItem(0, "Ударить", gameWindow.Resources.ICON_github.FullName
                 ))
 
                 .AddSelectionMenuItem(
-                    new SelectionMenuItem("Я даун", @"C:\Users\Minedroid\Downloads\github-mark-white.ico"
+                    new SelectionMenuItem(1, "Передумать", gameWindow.Resources.ICON_github.FullName
                 ))
 
             );
 
-            switch (selectionMenuItem.Text)
+            switch (selectionMenuItem.Index)
             {
-                case "Take":
+                case 0:
                     {
-                        await gameWindow.Functions.PlayVideo(@"SUNP004.mp4", true);
+                        await gameWindow.Functions.PlayVideo(gameWindow.Resources.VIDEO_SUNP004, true);
                         if ((await gameWindow.Functions.KeyResponse(Key.H, 2, new Point(1, 1))) == KeyResponseResult.Unsuccessful)
                         {
                             Fail();
@@ -110,27 +88,27 @@ namespace WGameMovieEngine
                         return;
                     }
 
-                case "Я даун":
+                case 1:
                     {
-                        await gameWindow.Functions.PlayVideo(@"SUNP003.mp4");
+                        await gameWindow.Functions.PlayVideo(gameWindow.Resources.VIDEO_SUNP003);
 
                         SelectionMenuItem selectionMenuItem1 = await gameWindow.Functions.GetAnswerFromSelectionMenu(new SelectionMenu()
 
                             .AddSelectionMenuItem(
-                                new SelectionMenuItem("Exit", @"C:\Users\Minedroid\Downloads\github-mark-white.ico"
+                                new SelectionMenuItem(0, "Выйти из комнаты", gameWindow.Resources.ICON_github.FullName
                             ))
 
                             .AddSelectionMenuItem(
-                                new SelectionMenuItem("D", @"C:\Users\Minedroid\Downloads\github-mark-white.ico"
+                                new SelectionMenuItem(1, "Остаться", gameWindow.Resources.ICON_github.FullName
                             ))
 
                         );
 
-                        switch (selectionMenuItem1.Text)
+                        switch (selectionMenuItem1.Index)
                         {
-                            case "Exit":
+                            case 0:
                                 {
-                                    await gameWindow.Functions.PlayVideo(@"SUNP005.mp4", true);
+                                    await gameWindow.Functions.PlayVideo(gameWindow.Resources.VIDEO_SUNP005, true);
 
                                     //
                                     // ---
@@ -179,36 +157,18 @@ namespace WGameMovieEngine
 
                                     //
                                     // ---
-                                    if ((await gameWindow.Functions.KeyResponse(Key.O, 2.649, new Point(1, 1))) == KeyResponseResult.Unsuccessful)
-                                    {
-                                        Fail();
-                                        return;
-                                    }
-                                    await Task.Delay(46569);
-
-                                    //
-                                    // ---
-                                    if ((await gameWindow.Functions.KeyResponse(Key.O, 2.106, new Point(1, 1))) == KeyResponseResult.Unsuccessful)
-                                    {
-                                        Fail();
-                                        return;
-                                    }
-                                    await Task.Delay(3148);
-
-                                    //
-                                    // ---
                                     if ((await gameWindow.Functions.KeyResponse(Key.O, 1.894, new Point(1, 1))) == KeyResponseResult.Unsuccessful)
                                     {
                                         Fail();
                                         return;
                                     }
-                                    await Task.Delay(201170);
+                                    await Task.Delay(20170);
 
                                     await gameWindow.Functions.GetAnswerFromSelectionMenu(
                                         new SelectionMenu()
 
                                         .AddSelectionMenuItem(
-                                            new SelectionMenuItem("Завершить", @"C:\Users\Minedroid\Downloads\github-mark-white.ico"
+                                            new SelectionMenuItem(0, "Завершить", gameWindow.Resources.ICON_github.FullName
                                         ))
 
                                     );
@@ -217,9 +177,9 @@ namespace WGameMovieEngine
                                 }
                                 break;
 
-                            case "D":
+                            case 1:
                                 {
-                                    await gameWindow.Functions.PlayVideo(@"SUNP006.mp4");
+                                    await gameWindow.Functions.PlayVideo(gameWindow.Resources.VIDEO_SUNP006);
                                     Fail();
                                     return;
                                 }
@@ -228,7 +188,43 @@ namespace WGameMovieEngine
                     break;
             }
         }
+        public async void GamePause()
+        {
+            gameWindow.Functions.Stop();
 
+            SelectionMenuItem selectionMenuItem2 = await gameWindow.Functions.GetAnswerFromSelectionMenu(new SelectionMenu() { }
+
+                        .AddSelectionMenuItem(
+                            new SelectionMenuItem(0, "Новая игра", gameWindow.Resources.ICON_github.FullName
+                        ))
+
+                        .AddSelectionMenuItem(
+                            new SelectionMenuItem(1, "Настройки", gameWindow.Resources.ICON_github.FullName
+                        ))
+
+                        .AddSelectionMenuItem(
+                            new SelectionMenuItem(2, "Выход", gameWindow.Resources.ICON_github.FullName
+                        ))
+
+                    );
+
+            if (selectionMenuItem2.Index == 0)
+            {
+                StartGame();
+                return;
+            }
+            else if (selectionMenuItem2.Index == 1)
+            {
+                Test();
+                return;
+            }
+            else if (selectionMenuItem2.Index == 2)
+            {
+                new Animations().CubicAnimation(gameWindow.engineUI_Player, MediaElement.OpacityProperty, 1, 0, 1);
+                await Task.Delay(1000);
+                Environment.Exit(0);
+            }
+        }
         public async void Fail()
         {
             for (double i = 1; i > 0; i -= 0.01)
@@ -241,11 +237,11 @@ namespace WGameMovieEngine
             SelectionMenuItem selectionMenuItem = await gameWindow.Functions.GetAnswerFromSelectionMenu(new SelectionMenu()
 
                 .AddSelectionMenuItem(
-                    new SelectionMenuItem("Вы проиграли", @"C:\Users\Minedroid\Downloads\github-mark-white.ico") { Color = new SolidColorBrush(Colors.Red) }
+                    new SelectionMenuItem(0, "Вы проиграли", gameWindow.Resources.ICON_github.FullName) { Color = new SolidColorBrush(Colors.Red) }
                 )
 
                 .AddSelectionMenuItem(
-                    new SelectionMenuItem("Заново"
+                    new SelectionMenuItem(1, "Заново"
                 ))
 
             );

@@ -1,18 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
 using System.Windows.Media.Animation;
 using System.Windows;
-using WGameMovieEngine.Engine.UI;
-using System.Windows.Media;
 
 namespace WGameMovieEngine.Engine
 {
     public class Animations
     {
+        /// <summary>
+        /// Кубическая анимация
+        /// </summary>
         public void CubicAnimation(UIElement uiElement, DependencyProperty dependencyProperty, double startValue, double finalValue, double duration)
         {
             // Создание анимации
@@ -26,6 +22,10 @@ namespace WGameMovieEngine.Engine
 
             uiElement.BeginAnimation(dependencyProperty, animation);
         }
+
+        /// <summary>
+        /// Линейная анимация
+        /// </summary>
         public void LinearAnimation(UIElement uiElement, DependencyProperty dependencyProperty, double startValue, double finalValue, double duration)
         {
             // Создание анимации

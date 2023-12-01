@@ -26,6 +26,14 @@ namespace WGameMovieEngine.Engine.UI
             InitializeComponent();
 
             this.kroUI_KeyLabel.Content = key;
+
+            ShowAnimation();
+        }
+        public void ShowAnimation()
+        {
+            new Animations().CubicAnimation(this.kroUI_KeyEllipse, Ellipse.WidthProperty, 290, 80, 0.4);
+            new Animations().CubicAnimation(this.kroUI_KeyEllipse, Ellipse.HeightProperty, 290, 80, 0.4);
+            new Animations().CubicAnimation(this.kroUI_KeyEllipse, Ellipse.OpacityProperty, 0, 1, 0.4);
         }
         public void KeyDownAnimation(bool IsTrue)
         {

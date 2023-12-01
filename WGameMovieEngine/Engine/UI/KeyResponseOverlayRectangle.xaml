@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="WGameMovieEngine.Engine.UI.KeyResponseOverlay"
+﻿<UserControl x:Class="WGameMovieEngine.Engine.UI.KeyResponseOverlayRectangle"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:WGameMovieEngine.Engine.UI"
              mc:Ignorable="d" Height="300" Width="300">
     <Grid>
-        <Ellipse Fill="White" Height="80" Width="80" x:Name="kroUI_KeyEllipse"/>
+        <Rectangle Fill="White" Height="50" Width="100" x:Name="kroUI_KeyRectangle"/>
         <Label Content="X" Foreground="Black" Height="40" Width="40" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="20" x:Name="kroUI_KeyLabel"/>
     </Grid>
 </UserControl>

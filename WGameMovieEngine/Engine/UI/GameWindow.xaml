@@ -10,7 +10,7 @@
         Closing="Window_Closing">
     <Grid x:Name="engineUI_Grid">
         <MediaElement x:Name="engineUI_Player" UnloadedBehavior="Manual" LoadedBehavior="Manual"/>
-        <ListBox x:Name="engineUI_ChoiseListBox" Opacity="0.7" Background="Gray" HorizontalContentAlignment="Stretch" Width="0" HorizontalAlignment="Left"/>
+        <ListBox x:Name="engineUI_ChoiseListBox" Opacity="0" Background="Gray" HorizontalContentAlignment="Stretch" HorizontalAlignment="Left"/>
         <Label Opacity="0.6" x:Name="engineUI_DebugLabel" Content="Debug: ON" VerticalAlignment="Top" HorizontalAlignment="Right" Width="221" Foreground="DarkOrange" Background="Black" HorizontalContentAlignment="Right" VerticalContentAlignment="Stretch" Height="68" Visibility="Hidden"/>
     </Grid>
 </Window>
