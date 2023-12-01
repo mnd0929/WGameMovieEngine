@@ -24,10 +24,12 @@ switch (selectionMenuItem.Index)
         {
             await gameWindow.Functions.PlayVideo(gameWindow.Resources.VIDEO_SUNP001);
         }
+        break;
 
     case 1:
         {
             await gameWindow.Functions.PlayVideo(gameWindow.Resources.VIDEO_SUNP002);
         }
+        break;
 }
 ```
