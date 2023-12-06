@@ -16,6 +16,7 @@ public Resource ICON_github = new Resource
             );
 ```
 
+
 Пример создания выбора:
 ```csharp
 SelectionMenuItem selectionMenuItem2 = await gameWindow.Functions.GetAnswerFromSelectionMenu(new SelectionMenu() { }
@@ -36,12 +37,12 @@ SelectionMenuItem selectionMenuItem2 = await gameWindow.Functions.GetAnswerFromS
 
             if (selectionMenuItem2.Index == 0)
             {
-                StartGame();
+                // Start Game
                 return;
             }
             else if (selectionMenuItem2.Index == 1)
             {
-                Test();
+                // Settings
                 return;
             }
             else if (selectionMenuItem2.Index == 2)
