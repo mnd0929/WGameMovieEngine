@@ -18,5 +18,37 @@ public Resource ICON_github = new Resource
 
 Пример создания выбора:
 ```csharp
-GameWindow window = new GameWindow();
+SelectionMenuItem selectionMenuItem2 = await gameWindow.Functions.GetAnswerFromSelectionMenu(new SelectionMenu() { }
+
+                        .AddSelectionMenuItem(
+                            new SelectionMenuItem(0, "Новая игра", gameWindow.Resources.ICON_github.FullName
+                        ))
+
+                        .AddSelectionMenuItem(
+                            new SelectionMenuItem(1, "Настройки", gameWindow.Resources.ICON_github.FullName
+                        ))
+
+                        .AddSelectionMenuItem(
+                            new SelectionMenuItem(2, "Выход", gameWindow.Resources.ICON_github.FullName
+                        ))
+
+                    );
+
+            if (selectionMenuItem2.Index == 0)
+            {
+                StartGame();
+                return;
+            }
+            else if (selectionMenuItem2.Index == 1)
+            {
+                Test();
+                return;
+            }
+            else if (selectionMenuItem2.Index == 2)
+            {
+                new Animations().CubicAnimation(gameWindow.engineUI_Player, MediaElement.OpacityProperty, 1, 0, 1);
+                await Task.Delay(1000);
+                Environment.Exit(0);
+            }
+
 ```
