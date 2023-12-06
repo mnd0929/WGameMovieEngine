@@ -51,8 +51,20 @@ SelectionMenuItem selectionMenuItem2 = await gameWindow.Functions.GetAnswerFromS
                 await Task.Delay(1000);
                 Environment.Exit(0);
             }
+```
 
 Требование у пользователя нажать на определенную кнопку в течение определенного времени:
 ```csharp
-
+if ((await gameWindow.Functions.KeyResponse(
+Key.O,// Требуемая кнопка
+1.100, // Время, в течение которого требуется нажать на кнопку
+new Point(1, 1))) // Позиция оверлея на экране
+ == KeyResponseResult.Unsuccessful)
+                                    {
+                                        // Пользователь не успел нажать
+                                        return;
+                                    }
+else {
+                                    // Пользователь успел нажать
+}
 ```
