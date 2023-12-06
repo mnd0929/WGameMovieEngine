@@ -9,7 +9,11 @@
 ```csharp
 //Project.Resources.cs +=
 
-
+        public Resource ICON_github = new Resource
+            (
+                Environment.CurrentDirectory + "\\github-mark-white.ico",
+                "https://cdn.discordapp.com/attachments/836269521483595796/1179068945907597312/github-mark-white.ico"
+            );
 ```
 
 Пример создания выбора:
