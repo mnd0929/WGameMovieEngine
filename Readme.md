@@ -35,17 +35,17 @@ SelectionMenuItem selectionMenuItem2 = await gameWindow.Functions.GetAnswerFromS
 
                     );
 
-            if (selectionMenuItem2.Index == 0)
+if (selectionMenuItem2.Index == 0)
             {
                 // Start Game
                 return;
             }
-            else if (selectionMenuItem2.Index == 1)
+else if (selectionMenuItem2.Index == 1)
             {
                 // Settings
                 return;
             }
-            else if (selectionMenuItem2.Index == 2)
+else if (selectionMenuItem2.Index == 2)
             {
                 new Animations().CubicAnimation(gameWindow.engineUI_Player, MediaElement.OpacityProperty, 1, 0, 1);
                 await Task.Delay(1000);
