@@ -10,10 +10,10 @@
 //Project.Resources.cs +=
 
 public Resource ICON_github = new Resource
-            (
-                Environment.CurrentDirectory + "\\github-mark-white.ico", // Прямой путь к ресурсу (Локально)
-                "https://cdn.discordapp.com/attachments/836269521483595796/1179068945907597312/github-mark-white.ico" // Прямая ссылка на ресурс с сервера
-            );
+(
+    Environment.CurrentDirectory + "\\github-mark-white.ico", // Прямой путь к ресурсу (Локально)
+    "https://cdn.discordapp.com/attachments/836269521483595796/1179068945907597312/github-mark-white.ico" // Прямая ссылка на ресурс с сервера
+);
 ```
 
 
@@ -21,19 +21,19 @@ public Resource ICON_github = new Resource
 ```csharp
 SelectionMenuItem selectionMenuItem2 = await gameWindow.Functions.GetAnswerFromSelectionMenu(new SelectionMenu() { }
 
-                        .AddSelectionMenuItem(
-                            new SelectionMenuItem(0, "Новая игра", gameWindow.Resources.ICON_github.FullName
-                        ))
+            .AddSelectionMenuItem(
+                new SelectionMenuItem(0, "Новая игра", gameWindow.Resources.ICON_github.FullName
+            ))
+            
+            .AddSelectionMenuItem(
+                new SelectionMenuItem(1, "Настройки", gameWindow.Resources.ICON_github.FullName
+            ))
+            
+            .AddSelectionMenuItem(
+                new SelectionMenuItem(2, "Выход", gameWindow.Resources.ICON_github.FullName
+            ))
 
-                        .AddSelectionMenuItem(
-                            new SelectionMenuItem(1, "Настройки", gameWindow.Resources.ICON_github.FullName
-                        ))
-
-                        .AddSelectionMenuItem(
-                            new SelectionMenuItem(2, "Выход", gameWindow.Resources.ICON_github.FullName
-                        ))
-
-                    );
+);
 
 if (selectionMenuItem2.Index == 0)
 {
